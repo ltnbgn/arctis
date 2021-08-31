@@ -54,9 +54,9 @@ module.exports = {
 				if (collector && !collector.ended) collector.stop();
 
 				if (queue.loop) {
-				// if loop is on, push the song back at the end of the queue
-				// so it can repeat endlessly
-				let lastSong = queue.songs.shift();
+					// if loop is on, push the song back at the end of the queue
+					// so it can repeat endlessly
+					let lastSong = queue.songs.shift();
 					queue.songs.push(lastSong);
 					module.exports.play(queue.songs[0], message);
 				} else {
