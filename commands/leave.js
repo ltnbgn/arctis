@@ -20,7 +20,11 @@ module.exports = {
 				.reply(i18n.__mf("common.errorNotInSameChannel", { user: message.client.user }))
 				.catch(console.error);
 
-		channel.leave()
-		return message.channel.send(i18n.__('common.leave')).catch(console.error);
+		try {
+			channel.leave();
+			return message.channel.send(i18n.__('common.leave')).catch(console.error);
+		} catch(err) {
+			console.log(err);
+		}
 	}
 };
