@@ -134,6 +134,7 @@
 		"off": "**off**",
 		"enabled": "**enabled**",
 		"disabled": "**disabled**",
+		"leave": ":wave: **Buh-Bye Peace** :v:",
 		"errorNotChannel": "You need to join a voice channel first!",
 		"errorNotInSameChannel": "You must be in the same channel as {user}",
 		"cooldownMessage": "please wait {time} more second(s) before reusing the `{name}` command.",
