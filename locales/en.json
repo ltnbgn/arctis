@@ -44,8 +44,8 @@
 		"cantJoinChannel": "Could not join the channel: {error}",
 		"queueEnded": ":x: Music queue ended.",
 		"queueError": "Error: {error}",
-		"startedPlaying": "🎶 Started playing: **{title}**",
-		"skipSong": "⏩ skipped the song",
+		"startedPlaying": "🎶 Now playing: **{title}**",
+		"skipSong": "**Skipped ⏩**",
 		"pauseSong": "**Paused** ⏸.",
 		"resumeSong": "**Resumed** ▶",
 		"unmutedSong": "**Muted** 🔊",
@@ -54,14 +54,14 @@
 		"increasedVolume": "🔊 volume increased to {volume}%",
 		"loopSong": "Loop is now {loop}",
 		"stopSong": "**Stopped** ⏹!",
-		"leaveChannel": "Leaving voice channel...",
-		"songNotFound": "Audio Not Found"
+		"leaveChannel": "**Leaving voice channel...**",
+		"songNotFound": "**Audio Not Found**"
 	},
 	"playlist": {
 		"description": "Play a playlist from youtube",
 		"usagesReply": "Usage: {prefix}playlist <YouTube Playlist URL | Playlist Name>",
 		"errorNotFoundPlaylist": "Playlist not found :(",
-		"fetchingPlaylist": "⌛ fetching the playlist...",
+		"fetchingPlaylist": "⌛ Fetching the playlist...",
 		"playlistCharLimit": "\nPlaylist larger than character limit...",
 		"startedPlaylist": "Started a playlist",
 		"cantJoinChannel": "Could not join the channel: {error}"
