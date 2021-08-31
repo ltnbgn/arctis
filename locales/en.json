@@ -7,6 +7,9 @@
 	"invite": {
 		"description": "Send bot invite link"
 	},
+	"leave": {
+		"description": "Leave voice channel if connected"
+	},
 	"loop": {
 		"description": "Toggle music loop",
 		"errorNotQueue": "There is nothing playing.",
@@ -36,35 +39,27 @@
 	},
 	"play": {
 		"description": "Plays audio from YouTube",
-		"errorNotChannel": "You need to join a voice channel first!",
-		"errorNotInSameChannel": "You must be in the same channel as {user}",
 		"usageReply": "Usage: {prefix}play <YouTube URL | Video Name>",
-		"missingPermissionConnect": "Cannot connect to voice channel, missing permissions",
-		"missingPermissionSpeak": "I cannot speak in this voice channel, make sure I have the proper permissions!",
 		"queueAdded": ":white_check_mark: **{title}** has been added to the queue by <@{author}>",
 		"cantJoinChannel": "Could not join the channel: {error}",
 		"queueEnded": ":x: Music queue ended.",
 		"queueError": "Error: {error}",
-		"startedPlaying": "🎶 Started playing: **{title}** {url}",
+		"startedPlaying": "🎶 Started playing: **{title}**",
 		"skipSong": "⏩ skipped the song",
-		"pauseSong": "⏸ paused the music.",
-		"resumeSong": "▶ resumed the music!",
-		"unmutedSong": "🔊 unmuted the music!",
-		"mutedSong": "🔇 muted the music!",
-		"decreasedVolume": "🔉 decreased the volume, the volume is now {volume}%",
-		"increasedVolume": "🔊 increased the volume, the volume is now {volume}%",
+		"pauseSong": "**Paused** ⏸.",
+		"resumeSong": "**Resumed** ▶",
+		"unmutedSong": "**Muted** 🔊",
+		"mutedSong": "**Unmuted** 🔇",
+		"decreasedVolume": "🔉 volume decreased to {volume}%",
+		"increasedVolume": "🔊 volume increased to {volume}%",
 		"loopSong": "Loop is now {loop}",
-		"stopSong": "⏹ stopped the music!",
+		"stopSong": "**Stopped** ⏹!",
 		"leaveChannel": "Leaving voice channel...",
 		"songNotFound": "Audio Not Found"
 	},
 	"playlist": {
 		"description": "Play a playlist from youtube",
 		"usagesReply": "Usage: {prefix}playlist <YouTube Playlist URL | Playlist Name>",
-		"errorNotChannel": "You need to join a voice channel first!",
-		"errorNotInSameChannel": "You must be in the same channel as {user}",
-		"missingPermissionConnect": "Cannot connect to voice channel, missing permissions",
-		"missingPermissionSpeak": "I cannot speak in this voice channel, make sure I have the proper permissions!",
 		"errorNotFoundPlaylist": "Playlist not found :(",
 		"fetchingPlaylist": "⌛ fetching the playlist...",
 		"playlistCharLimit": "\nPlaylist larger than character limit...",
@@ -140,7 +135,10 @@
 		"enabled": "**enabled**",
 		"disabled": "**disabled**",
 		"errorNotChannel": "You need to join a voice channel first!",
+		"errorNotInSameChannel": "You must be in the same channel as {user}",
 		"cooldownMessage": "please wait {time} more second(s) before reusing the `{name}` command.",
-		"errorCommand": "There was an error executing that command."
+		"errorCommand": "There was an error executing that command.",
+		"missingPermissionConnect": "Cannot connect to voice channel, missing permissions",
+		"missingPermissionSpeak": "I cannot speak in this voice channel, make sure I have the proper permissions!"
 	}
 }

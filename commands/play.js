@@ -15,12 +15,14 @@ module.exports = {
 	description: i18n.__("play.description"),
 	async execute(message, args) {
 		const { channel } = message.member.voice;
-
 		const serverQueue = message.client.queue.get(message.guild.id);
-		if (!channel) return message.reply(i18n.__("play.errorNotChannel")).catch(console.error);
+
+		if (!channel)
+			return message.reply(i18n.__("common.errorNotChannel")).catch(console.error);
+
 		if (serverQueue && channel !== message.guild.me.voice.channel)
 			return message
-				.reply(i18n.__mf("play.errorNotInSameChannel", { user: message.client.user }))
+				.reply(i18n.__mf("common.errorNotInSameChannel", { user: message.client.user }))
 				.catch(console.error);
 
 		if (!args.length)
@@ -31,10 +33,10 @@ module.exports = {
 		const permissions = channel.permissionsFor(message.client.user);
 
 		if (!permissions.has("CONNECT"))
-			return message.reply(i18n.__("play.missingPermissionConnect"));
+			return message.reply(i18n.__("common.missingPermissionConnect"));
 
 		if (!permissions.has("SPEAK"))
-			return message.reply(i18n.__("play.missingPermissionSpeak"));
+			return message.reply(i18n.__("common.missingPermissionSpeak"));
 
 		const search = args.join(" ");
 		const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
