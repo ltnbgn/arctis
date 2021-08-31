@@ -8,7 +8,10 @@
 		"description": "Send bot invite link"
 	},
 	"leave": {
-		"description": "Leave voice channel if connected"
+		"description": "Leaves voice channel if connected"
+	},
+	"join": {
+		"description": "Joins voice channel"
 	},
 	"loop": {
 		"description": "Toggle music loop",
@@ -40,19 +43,19 @@
 	"play": {
 		"description": "Plays audio from YouTube",
 		"usageReply": "Usage: {prefix}play <YouTube URL | Video Name>",
-		"queueAdded": ":white_check_mark: **{title}** has been added to the queue by <@{author}>",
-		"cantJoinChannel": "Could not join the channel: {error}",
-		"queueEnded": ":x: Music queue ended.",
-		"queueError": "Error: {error}",
-		"startedPlaying": "🎶 Now playing: **{title}**",
-		"skipSong": "**Skipped ⏩**",
-		"pauseSong": "**Paused** ⏸.",
-		"resumeSong": "**Resumed** ▶",
-		"unmutedSong": "**Muted** 🔊",
-		"mutedSong": "**Unmuted** 🔇",
-		"decreasedVolume": "🔉 volume decreased to {volume}%",
-		"increasedVolume": "🔊 volume increased to {volume}%",
-		"loopSong": "Loop is now {loop}",
+		"queueAdded": ":white_check_mark: `{title}` **has been added to the queue by** <@{author}>",
+		"cantJoinChannel": "**Could not join the channel** {error}",
+		"queueEnded": ":x: **Music queue ended**",
+		"queueError": "**Error** {error}",
+		"startedPlaying": "🎶 **Now playing** `{title}`",
+		"skipSong": "**⏩ Skipped**",
+		"pauseSong": "**⏸ Paused**",
+		"resumeSong": "** ▶ Resumed**",
+		"unmutedSong": "**🔊 Muted**",
+		"mutedSong": "**🔇 Unmuted**",
+		"decreasedVolume": "🔉 **volume decreased to** {volume}%",
+		"increasedVolume": "🔊 **volume increased to** {volume}%",
+		"loopSong": "**Loop {loop}**",
 		"stopSong": "**Stopped** ⏹!",
 		"leaveChannel": "**Leaving voice channel...**",
 		"songNotFound": "**Audio Not Found**"
@@ -63,7 +66,7 @@
 		"errorNotFoundPlaylist": "Playlist not found :(",
 		"fetchingPlaylist": "⌛ Fetching the playlist...",
 		"playlistCharLimit": "\nPlaylist larger than character limit...",
-		"startedPlaylist": "Started a playlist",
+		"startedPlaylist": "**Started a playlist**",
 		"cantJoinChannel": "Could not join the channel: {error}"
 	},
 	"queue": {
@@ -134,6 +137,7 @@
 		"off": "**off**",
 		"enabled": "**enabled**",
 		"disabled": "**disabled**",
+		"join": ":wave: **Wasssaaaaaa**",
 		"leave": ":wave: **Buh-Bye Peace** :v:",
 		"errorNotChannel": "You need to join a voice channel first!",
 		"errorNotInSameChannel": "You must be in the same channel as {user}",
