@@ -1,11 +1,9 @@
 const { MessageEmbed } = require("discord.js");
 const { play } = require("../include/play");
 const YouTubeAPI = require("simple-youtube-api");
-const scdl = require("soundcloud-downloader").default;
 
 const {
 	YOUTUBE_API_KEY,
-	SOUNDCLOUD_CLIENT_ID,
 	MAX_PLAYLIST_SIZE,
 	DEFAULT_VOLUME,
 	LOCALE
@@ -69,16 +67,6 @@ module.exports = {
 			} catch (error) {
 				console.error(error);
 				return message.reply(i18n.__("playlist.errorNotFoundPlaylist")).catch(console.error);
-			}
-		} else if (scdl.isValidUrl(args[0])) {
-			if (args[0].includes("/sets/")) {
-				message.channel.send(i18n.__("playlist.fetchingPlaylist"));
-				playlist = await scdl.getSetInfo(args[0], SOUNDCLOUD_CLIENT_ID);
-				videos = playlist.tracks.map((track) => ({
-					title: track.title,
-					url: track.permalink_url,
-					duration: track.duration / 1000
-				}));
 			}
 		} else {
 			try {
