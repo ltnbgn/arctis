@@ -1,7 +1,6 @@
 const { play } = require("../include/play");
 const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
-const https = require("https");
 const { YOUTUBE_API_KEY, LOCALE, DEFAULT_VOLUME } = require("../utilities/ArctisUtility");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 const i18n = require("i18n");
@@ -47,22 +46,6 @@ module.exports = {
 		// Start the playlist if playlist url was provided
 		if (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) {
 			return message.client.commands.get("playlist").execute(message, args);
-		}
-
-		if (mobileScRegex.test(url)) {
-			try {
-				https.get(url, function (res) {
-					if (res.statusCode == "302") {
-						return message.client.commands.get("play").execute(message, [res.headers.location]);
-					} else {
-						return message.reply("No content could be found at that url.").catch(console.error);
-					}
-				});
-			} catch (error) {
-				console.error(error);
-				return message.reply(error.message).catch(console.error);
-			}
-			return message.reply("Following url redirection...").catch(console.error);
 		}
 
 		const queueConstruct = {
