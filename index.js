@@ -9,6 +9,8 @@ const client = new Client({
 	restTimeOffset: 0
 });
 
+require('events').EventEmitter.defaultMaxListeners = 100;
+
 client.login(TOKEN);
 client.commands = new Collection();
 client.prefix = PREFIX;
