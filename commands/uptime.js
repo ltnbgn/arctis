@@ -17,8 +17,8 @@ module.exports = {
 		minutes %= 60;
 		hours %= 24;
 
-		return message
-			.reply(i18n.__mf('uptime.result', {days: days, hours: hours, minutes: minutes, seconds: seconds}))
+		return message.channel
+			.send(i18n.__mf('uptime.result', {days: days, hours: hours, minutes: minutes, seconds: seconds}))
 			.catch(console.error);
 	}
 };

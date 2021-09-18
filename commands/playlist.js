@@ -1,4 +1,3 @@
-const { MessageEmbed } = require("discord.js");
 const { play } = require("../include/play");
 const YouTubeAPI = require("simple-youtube-api");
 
@@ -53,7 +52,7 @@ module.exports = {
 			connection: null,
 			songs: [],
 			loop: false,
-			volume: DEFAULT_VOLUME || 100,
+			volume: DEFAULT_VOLUME || 50,
 			playing: true
 		};
 
@@ -91,18 +90,7 @@ module.exports = {
 
 		serverQueue ? serverQueue.songs.push(...newSongs) : queueConstruct.songs.push(...newSongs);
 
-		let playlistEmbed = new MessageEmbed()
-			.setTitle(`${playlist.title}`)
-			.setDescription(newSongs.map((song, index) => `${index + 1}. ${song.title}`))
-			.setURL(playlist.url)
-			.setColor("#F8AA2A")
-			.setTimestamp();
-
-		if (playlistEmbed.description.length >= 2048)
-			playlistEmbed.description =
-				playlistEmbed.description.substr(0, 2007) + i18n.__("playlist.playlistCharLimit");
-
-		message.channel.send(i18n.__mf("playlist.startedPlaylist", { author: message.author }), playlistEmbed);
+		message.channel.send(i18n.__mf("playlist.startedPlaylist", { author: message.author }) + " `" + playlist.title + "`");
 
 		if (!serverQueue) {
 			message.client.queue.set(message.guild.id, queueConstruct);

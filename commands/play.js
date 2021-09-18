@@ -17,25 +17,25 @@ module.exports = {
 		const serverQueue = message.client.queue.get(message.guild.id);
 
 		if (!channel)
-			return message.reply(i18n.__("common.errorNotChannel")).catch(console.error);
+			return message.channel.send(i18n.__("common.errorNotChannel")).catch(console.error);
 
 		if (serverQueue && channel !== message.guild.me.voice.channel)
 			return message
-				.reply(i18n.__mf("common.errorNotInSameChannel", { user: message.client.user }))
+				.channel.send(i18n.__mf("common.errorNotInSameChannel", { user: message.client.user }))
 				.catch(console.error);
 
 		if (!args.length)
-			return message
-				.reply(i18n.__mf("play.usageReply", { prefix: message.client.prefix }))
+			return message.channel
+				.send(i18n.__mf("play.usageReply", { prefix: message.client.prefix }))
 				.catch(console.error);
 
 		const permissions = channel.permissionsFor(message.client.user);
 
 		if (!permissions.has("CONNECT"))
-			return message.reply(i18n.__("common.missingPermissionConnect"));
+			return message.channel.send(i18n.__("common.missingPermissionConnect"));
 
 		if (!permissions.has("SPEAK"))
-			return message.reply(i18n.__("common.missingPermissionSpeak"));
+			return message.channel.send(i18n.__("common.missingPermissionSpeak"));
 
 		const search = args.join(" ");
 		const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
@@ -71,7 +71,7 @@ module.exports = {
 				};
 			} catch (error) {
 				console.error(error);
-				return message.reply(error.message).catch(console.error);
+				return message.channel.send(error.message).catch(console.error);
 			}
 		} else {
 			try {
@@ -79,7 +79,7 @@ module.exports = {
 				// PATCH 1 : avoid cases when there are nothing on the search results.
 				if (results.length <= 0) {
 					// No video results.
-					message.reply(i18n.__mf("play.songNotFound")).catch(console.error);
+					message.channel.send(i18n.__mf("play.songNotFound")).catch(console.error);
 					return;
 				}
 				songInfo = await ytdl.getInfo(results[0].url);
@@ -90,7 +90,7 @@ module.exports = {
 				};
 			} catch (error) {
 				console.error(error);
-				return message.reply(error.message).catch(console.error);
+				return message.channel.send(error.message).catch(console.error);
 			}
 		}
 

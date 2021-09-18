@@ -19,7 +19,7 @@ module.exports = {
 			return message.reply(i18n.__("search.errorAlreadyCollector"));
 		
 		if (!message.member.voice.channel)
-			return message.reply(i18n.__("search.errorNotChannel")).catch(console.error);
+			return message.reply(i18n.__("common.errorNotChannel")).catch(console.error);
 
 		const search = args.join(" ");
 

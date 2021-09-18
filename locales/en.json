@@ -15,34 +15,30 @@
 	},
 	"loop": {
 		"description": "Toggle music loop",
-		"errorNotQueue": "There is nothing playing.",
-		"result": "Loop is now {loop}"
+		"result": "**Loop is now** `{loop}`"
 	},
 	"move": {
 		"description": "Move songs around in the queue",
-		"errorNotQueue": "There is no queue.",
-		"usagesReply": "Usage: {prefix}move <Queue Number>",
-		"result": "🚚 moved **{title}** to {index} in the queue."
+		"usagesReply": "**Usage:** `{prefix}move <Queue Number>`",
+		"result": "🚚 **moved** `{title}` **to {index} in the queue.**"
 	},
 	"nowplaying": {
 		"description": "Show now playing song",
-		"errorNotQueue": "There is nothing playing.",
-		"embedTitle": "Now playing",
-		"live": "◉ LIVE",
-		"timeRemaining": "Time Remaining: {time}"
+		"embedTitle": "**Now playing**",
+		"live": "◉ **LIVE**",
+		"timeRemaining": "**Time Remaining: `{time}`**"
 	},
 	"pause": {
 		"description": "Pause the currently playing music",
-		"errorNotQueue": "There is nothing playing.",
-		"result": "⏸ paused the music."
+		"result": "⏸ **paused the music.**"
 	},
 	"ping": {
 		"description": "Show the bot's average ping",
-		"result": "Average ping to API: {ping} ms"
+		"result": "**Average ping to API: `{ping} ms`**"
 	},
 	"play": {
 		"description": "Plays audio from YouTube",
-		"usageReply": "Usage: {prefix}play <YouTube URL | Video Name>",
+		"usageReply": "**Usage:** `{prefix}play <YouTube URL | Video Name>`",
 		"queueAdded": ":white_check_mark: `{title}` **has been added to the queue by** <@{author}>",
 		"cantJoinChannel": "**Could not join the channel** {error}",
 		"queueEnded": ":x: **Music queue ended**",
@@ -62,75 +58,64 @@
 	},
 	"playlist": {
 		"description": "Play a playlist from youtube",
-		"usagesReply": "Usage: {prefix}playlist <YouTube Playlist URL | Playlist Name>",
-		"errorNotFoundPlaylist": "Playlist not found :(",
-		"fetchingPlaylist": "⌛ Fetching the playlist...",
-		"playlistCharLimit": "\nPlaylist larger than character limit...",
+		"usagesReply": "**Usage:** `{prefix}playlist <YouTube Playlist URL | Playlist Name>`",
+		"errorNotFoundPlaylist": "**Playlist not found :pensive:**",
+		"fetchingPlaylist": "⌛ **Fetching the playlist...**",
 		"startedPlaylist": "**Started a playlist**",
-		"cantJoinChannel": "Could not join the channel: {error}"
+		"cantJoinChannel": "**Could not join the channel: `{error}`**"
 	},
 	"queue": {
 		"description": "Show the music queue and now playing.",
-		"missingPermissionMessage": "Missing permission to manage messages or add reactions",
-		"errorNotQueue": "❌ **Nothing playing in this server**",
+		"missingPermissionMessage": "**Missing permission to manage messages or add reactions**",
 		"currentPage": "Current Page - ",
-		"embedTitle": "Song Queue\n",
-		"embedCurrentSong": "**Current Song - [{title}]({url})**\n\n{info}"
+		"embedTitle": "**Song Queue**\n",
+		"embedCurrentSong": "**Current Song - `[{title}]`**\n\n{info}"
 	},
 	"remove": {
 		"description": "Remove song from the queue",
-		"errorNotQueue": "There is no queue.",
-		"usageReply": "Usage: {prefix}remove <Queue Number>",
-		"result": "❌ removed **{title}** from the queue."
+		"usageReply": "**Usage:** `{prefix}remove <Queue Number>`",
+		"result": "❌ **removed `{title}` from the queue.**"
 	},
 	"resume": {
 		"description": "Resume currently playing music",
-		"errorNotQueue": "There is nothing playing.",
-		"resultNotPlaying": "▶ resumed the music!",
-		"errorPlaying": "The queue is not paused."
+		"resultNotPlaying": "**▶ resumed the music!**",
+		"errorPlaying": "**The queue is not paused.**"
 	},
 	"search": {
 		"description": "Search and select videos to play",
-		"usageReply": "Usage: {prefix}{name} <Video Name>",
+		"usageReply": "**Usage:** `{prefix}{name} <Video Name>`",
 		"errorAlreadyCollector": "A message collector is already active in this channel.",
-		"errorNotChannel": "You need to join a voice channel first!",
 		"resultEmbedTtile": "**Reply with the song number you want to play**",
-		"resultEmbedDesc": "Results for: {search}"
+		"resultEmbedDesc": "**Results for:** `{search}`"
 	},
 	"shuffle": {
 		"description": "Shuffle queue",
-		"errorNotQueue": "There is no queue.",
-		"result": "Shuffled the queue"
+		"result": "**:twisted_rightwards_arrows: Shuffled the queue**"
 	},
 	"skip": {
 		"description": "Skip the currently playing song",
-		"errorNotQueue": "There is nothing playing that I could skip for you.",
-		"result": "⏭ skipped the song"
+		"result": "⏭ **skipped the song**"
 	},
 	"skipto": {
 		"description": "Skip to the selected queue number",
-		"usageReply": "Usage: {prefix}{name} <Queue Number>",
-		"errorNotQueue": "There is no queue.",
-		"errorNotValid": "The queue is only {length} songs long!",
-		"result": "⏭ skipped {arg} songs"
+		"usageReply": "**Usage:** `{prefix}{name} <Queue Number>`",
+		"errorNotValid": "**The queue is only `{length}` songs long!**",
+		"result": "⏭ **skipped `{arg}` songs**"
 	},
 	"stop": {
 		"description": "Stops the music",
-		"errorNotQueue": "There is nothing playing.",
-		"result": "⏹ stopped the music!"
+		"result": "⏹ **stopped the music!**"
 	},
 	"uptime": {
 		"description": "Check the uptime",
-		"result": "Uptime: `{days} day(s),{hours} hours, {minutes} minutes, {seconds} seconds`"
+		"result": ":timer: **Uptime:** `{days} day(s),{hours} hours, {minutes} minutes, {seconds} seconds`"
 	},
 	"volume": {
 		"description": "Change volume of currently playing music",
-		"errorNotQueue": "There is nothing playing.",
-		"errorNotChannel": "You need to join a voice channel first!",
-		"currentVolume": "🔊 The current volume is: **{volume}%**",
-		"errorNotNumber": "Please use a number to set volume.",
-		"errorNotValid": "Please use a number between 0 - 100.",
-		"result": "Volume set to: **{arg}%**"
+		"currentVolume": "🔊 **The current volume is: `{volume}%`**",
+		"errorNotNumber": "**Please use a number to set volume.**",
+		"errorNotValid": "**Please use a number between 0 - 100.**",
+		"result": "**Volume set to: `{arg}%`**"
 	},
 	"common": {
 		"on": "**on**",
@@ -138,12 +123,13 @@
 		"enabled": "**enabled**",
 		"disabled": "**disabled**",
 		"join": ":wave: **Wasssaaaaaa**",
-		"leave": ":wave: **Buh-Bye Peace** :v:",
-		"errorNotChannel": "You need to join a voice channel first!",
-		"errorNotInSameChannel": "You must be in the same channel as {user}",
-		"cooldownMessage": "please wait {time} more second(s) before reusing the `{name}` command.",
-		"errorCommand": "There was an error executing that command.",
-		"missingPermissionConnect": "Cannot connect to voice channel, missing permissions",
-		"missingPermissionSpeak": "I cannot speak in this voice channel, make sure I have the proper permissions!"
+		"leave": ":wave: **Peace**",
+		"errorNotQueue": "**There is no queue**",
+		"errorNotChannel": "**You need to join a voice channel first!**",
+		"errorNotInSameChannel": "**You must be in the same channel with me :slight_smile:**",
+		"cooldownMessage": "**Please wait {time} more second(s) before reusing the `{name}` command.**",
+		"errorCommand": "**There was an error executing that command.**",
+		"missingPermissionConnect": "**Cannot connect to voice channel, missing permissions**",
+		"missingPermissionSpeak": "**I cannot speak in this voice channel, make sure I have the proper permissions!**"
 	}
 }

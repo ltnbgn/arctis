@@ -12,16 +12,16 @@ module.exports = {
 		const queue = message.client.queue.get(message.guild.id);
 		
 		if (!queue)
-			return message.channel.send(i18n.__("move.errorNotQueue")).catch(console.error);
+			return message.channel.send(i18n.__("common.errorNotQueue")).catch(console.error);
 		
 		if (!canModifyQueue(message.member))
 			return;
 
 		if (!args.length)
-			return message.reply(i18n.__mf("move.usagesReply", { prefix: message.client.prefix }));
+			return message.channel.send(i18n.__mf("move.usagesReply", { prefix: message.client.prefix }));
 		
 		if (isNaN(args[0]) || args[0] <= 1)
-			return message.reply(i18n.__mf("move.usagesReply", { prefix: message.client.prefix }));
+			return message.channel.send(i18n.__mf("move.usagesReply", { prefix: message.client.prefix }));
 
 		let song = queue.songs[args[0] - 1];
 

@@ -12,7 +12,7 @@ module.exports = {
 	execute(message) {
 		const queue = message.client.queue.get(message.guild.id);
 		if (!queue)
-			return message.reply(i18n.__("nowplaying.errorNotQueue")).catch(console.error);
+			return message.reply(i18n.__("common.errorNotQueue")).catch(console.error);
 
 		const song = queue.songs[0];
 		const seek = (queue.connection.dispatcher.streamTime - queue.connection.dispatcher.pausedTime) / 1000;

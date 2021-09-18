@@ -1,6 +1,6 @@
 {
 	"name": "arctis",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Discord music bot built with discord.js",
 	"main": "index.js",
 	"author": "Altanbagana <altanbagana@protonmail.com>",

@@ -8,9 +8,7 @@ module.exports = {
 	description: i18n.__('invite.description'),
 	execute(message) {
 		return message.member
-			.send(
-				`https://discord.com/oauth2/authorize?client_id=${message.client.user.id}&permissions=70282305&scope=bot`
-			)
+			.send(`https://discord.com/oauth2/authorize?client_id=${message.client.user.id}&permissions=70282305&scope=bot`)
 			.catch(console.error);
 	}
 };

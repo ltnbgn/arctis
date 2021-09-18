@@ -18,7 +18,7 @@ module.exports = {
 		const queue = message.client.queue.get(message.guild.id);
 		
 		if (!queue)
-			return message.channel.send(i18n.__("queue.errorNotQueue"));
+			return message.channel.send(i18n.__("common.errorNotQueue"));
 
 		let currentPage = 0;
 		const embeds = generateQueueEmbed(message, queue.songs);
@@ -30,7 +30,6 @@ module.exports = {
 
 		try {
 			await queueEmbed.react("⬅️");
-			await queueEmbed.react("⏹");
 			await queueEmbed.react("➡️");
 		} catch (error) {
 			console.error(error);
@@ -38,7 +37,7 @@ module.exports = {
 		}
 
 		const filter = (reaction, user) =>
-			["⬅️", "⏹", "➡️"].includes(reaction.emoji.name) && message.author.id === user.id;
+			["⬅️", "➡️"].includes(reaction.emoji.name) && message.author.id === user.id;
 		const collector = queueEmbed.createReactionCollector(filter, { time: 60000 });
 
 		collector.on("collect", async (reaction, user) => {
@@ -88,7 +87,7 @@ function generateQueueEmbed(message, queue) {
 			.setThumbnail(message.guild.iconURL())
 			.setColor("#F8AA2A")
 			.setDescription(
-				i18n.__mf("queue.embedCurrentSong", { title: queue[0].title, url: queue[0].url, info: info })
+				i18n.__mf("queue.embedCurrentSong", { title: queue[0].title, info: info })
 			)
 			.setTimestamp();
 		embeds.push(embed);

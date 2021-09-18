@@ -13,14 +13,16 @@ module.exports = {
 		const serverQueue = message.client.queue.get(message.guild.id);
 
         if (!channel)
-            return message.reply(i18n.__("common.errorNotChannel")).catch(console.error);
+            return message.channel
+				.send(i18n.__("common.errorNotChannel")).catch(console.error);
 
         if (serverQueue && channel !== message.guild.me.voice.channel)
-			return message
-				.reply(i18n.__mf("common.errorNotInSameChannel", { user: message.client.user }))
+			return message.channel
+				.send(i18n.__mf("common.errorNotInSameChannel", { user: message.client.user }))
 				.catch(console.error);
 
 		channel.join()
+
 		return message.channel.send(i18n.__('common.join')).catch(console.error);
 	}
 };
