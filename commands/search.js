@@ -7,63 +7,62 @@ const i18n = require("i18n");
 i18n.setLocale(LOCALE);
 
 module.exports = {
-	name: "search",
-	description: i18n.__("search.description"),
-	async execute(message, args) {
-		if (!args.length)
-			return message
-				.reply(i18n.__mf("search.usageReply", { prefix: message.client.prefix, name: module.exports.name }))
-				.catch(console.error);
-		
-		if (message.channel.activeCollector)
-			return message.reply(i18n.__("search.errorAlreadyCollector"));
-		
-		if (!message.member.voice.channel)
-			return message.reply(i18n.__("common.errorNotChannel")).catch(console.error);
+  name: "search",
+  description: i18n.__("search.description"),
+  async execute(message, args) {
+    if (!args.length)
+      return message
+        .reply(i18n.__mf("search.usageReply", { prefix: message.client.prefix, name: module.exports.name }))
+        .catch(console.error);
 
-		const search = args.join(" ");
+    if (message.channel.activeCollector) return message.reply(i18n.__("search.errorAlreadyCollector"));
 
-		let resultsEmbed = new MessageEmbed()
-			.setTitle(i18n.__("search.resultEmbedTtile"))
-			.setDescription(i18n.__mf("search.resultEmbedDesc", { search: search }))
-			.setColor("#F8AA2A");
+    if (!message.member.voice.channel)
+      return message.reply(i18n.__("common.errorNotChannel")).catch(console.error);
 
-		try {
-			const results = await youtube.searchVideos(search, 10);
-			results.map((video, index) => resultsEmbed.addField(video.shortURL, `${index + 1}. ${video.title}`));
+    const search = args.join(" ");
 
-			let resultsMessage = await message.channel.send(resultsEmbed);
+    let resultsEmbed = new MessageEmbed()
+      .setTitle(i18n.__("search.resultEmbedTtile"))
+      .setDescription(i18n.__mf("search.resultEmbedDesc", { search: search }))
+      .setColor("#F8AA2A");
 
-			function filter(msg) {
-				const pattern = /^[0-9]{1,2}(\s*,\s*[0-9]{1,2})*$/;
-				return pattern.test(msg.content);
-			}
+    try {
+      const results = await youtube.searchVideos(search, 10);
+      results.map((video, index) => resultsEmbed.addField(video.shortURL, `${index + 1}. ${video.title}`));
 
-			message.channel.activeCollector = true;
+      let resultsMessage = await message.channel.send(resultsEmbed);
 
-			const response = await message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ["time"] });
-			const reply = response.first().content;
+      function filter(msg) {
+        const pattern = /^[0-9]{1,2}(\s*,\s*[0-9]{1,2})*$/;
+        return pattern.test(msg.content);
+      }
 
-			if (reply.includes(",")) {
-				let songs = reply.split(",").map((str) => str.trim());
+      message.channel.activeCollector = true;
 
-				for (let song of songs) {
-					await message.client.commands
-						.get("play")
-						.execute(message, [resultsEmbed.fields[parseInt(song) - 1].name]);
-				}
-			} else {
-				const choice = resultsEmbed.fields[parseInt(response.first()) - 1].name;
-				message.client.commands.get("play").execute(message, [choice]);
-			}
+      const response = await message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ["time"] });
+      const reply = response.first().content;
 
-			message.channel.activeCollector = false;
-			resultsMessage.delete().catch(console.error);
-			response.first().delete().catch(console.error);
-		} catch (error) {
-			console.error(error);
-			message.channel.activeCollector = false;
-			message.reply(error.message).catch(console.error);
-		}
-	}
+      if (reply.includes(",")) {
+        let songs = reply.split(",").map((str) => str.trim());
+
+        for (let song of songs) {
+          await message.client.commands
+            .get("play")
+            .execute(message, [resultsEmbed.fields[parseInt(song) - 1].name]);
+        }
+      } else {
+        const choice = resultsEmbed.fields[parseInt(response.first()) - 1].name;
+        message.client.commands.get("play").execute(message, [choice]);
+      }
+
+      message.channel.activeCollector = false;
+      resultsMessage.delete().catch(console.error);
+      response.first().delete().catch(console.error);
+    } catch (error) {
+      console.error(error);
+      message.channel.activeCollector = false;
+      message.reply(error.message).catch(console.error);
+    }
+  }
 };
