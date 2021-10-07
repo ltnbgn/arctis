@@ -86,7 +86,7 @@ function generateQueueEmbed(message, queue) {
       .setThumbnail(message.guild.iconURL())
       .setColor("#F8AA2A")
       .setDescription(i18n.__mf("queue.embedCurrentSong", { title: queue[0].title, info: info }))
-      .setFooter("Arctis v1.0");
+      .setFooter(i18n.__("version"))
     embeds.push(embed);
   }
 

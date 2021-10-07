@@ -1,7 +1,8 @@
 const { play } = require("../include/play");
 const YouTubeAPI = require("simple-youtube-api");
+const scdl = require("soundcloud-downloader").default;
 
-const { YOUTUBE_API_KEY, MAX_PLAYLIST_SIZE, DEFAULT_VOLUME, LOCALE } = require("../utilities/ArctisUtility");
+const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, MAX_PLAYLIST_SIZE, DEFAULT_VOLUME, LOCALE } = require("../utilities/ArctisUtility");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 const i18n = require("i18n");
 
@@ -59,6 +60,16 @@ module.exports = {
         console.error(error);
         return message.reply(i18n.__("playlist.errorNotFoundPlaylist")).catch(console.error);
       }
+    } else if (scdl.isValidUrl(args[0])) {
+			if (args[0].includes("/sets/")) {
+				message.channel.send(i18n.__("playlist.fetchingPlaylist"));
+				playlist = await scdl.getSetInfo(args[0], SOUNDCLOUD_CLIENT_ID);
+				videos = playlist.tracks.map((track) => ({
+					title: track.title,
+					url: track.permalink_url,
+					duration: track.duration / 1000
+				}));
+			}
     } else {
       try {
         const results = await youtube.searchPlaylists(search, 1, { part: "snippet" });

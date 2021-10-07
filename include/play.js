@@ -1,10 +1,13 @@
 const ytdl = require("ytdl-core-discord");
+const scdl = require("soundcloud-downloader").default;
 const { canModifyQueue, STAY_TIME, LOCALE } = require("../utilities/ArctisUtility");
 const i18n = require("i18n");
 i18n.setLocale(LOCALE);
 
 module.exports = {
   async play(song, message) {
+    const { SOUNDCLOUD_CLIENT_ID } = require("../utilities/ArctisUtility");
+
     let config;
 
     try {
@@ -33,6 +36,13 @@ module.exports = {
     try {
       if (song.url.includes("youtube.com")) {
         stream = await ytdl(song.url, { highWaterMark: 1 << 25 });
+      } else if (song.url.includes("soundcloud.com")) {
+				try {
+				  stream = await scdl.downloadFormat(song.url, scdl.FORMATS.OPUS, SOUNDCLOUD_CLIENT_ID);
+				} catch (error) {
+          stream = await scdl.downloadFormat(song.url, scdl.FORMATS.MP3, SOUNDCLOUD_CLIENT_ID);
+          streamType = "unknown";
+        }
       }
     } catch (error) {
       if (queue) {

@@ -1,8 +1,10 @@
 {
+  "version": "Arctis v1.1",
   "help": {
     "description": "Display all commands and descriptions",
     "embedTitle": "{botname} Help",
-    "embedDescription": "Command List"
+    "embedDescription": "Command List",
+    "developer": "Developed by 𝕶𝖚𝖏𝖆 𝕬𝖒𝖆𝖓𝖔#5134\n\nIf you encounter any bug, Please send a mail to `altanbagana@pm.me` or contact directly to my discord account. Have fun :D"
   },
   "invite": {
     "description": "Send bot invite link"
@@ -61,7 +63,7 @@
     "usagesReply": "**Usage:** `{prefix}playlist <YouTube Playlist URL | Playlist Name>`",
     "errorNotFoundPlaylist": "**Playlist not found :pensive:**",
     "fetchingPlaylist": "⌛ **Fetching the playlist...**",
-    "startedPlaylist": "**Started a playlist**",
+    "startedPlaylist": "**:metal: Started a playlist**",
     "cantJoinChannel": "**Could not join the channel: `{error}`**"
   },
   "queue": {
