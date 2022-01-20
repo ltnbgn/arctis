@@ -39,8 +39,5 @@ module.exports = {
     }
 
     return message.channel.send(nowPlaying)
-      .then(msg => {
-        msg.delete(song.duration * 1000)
-      });
   }
 };
